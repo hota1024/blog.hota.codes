@@ -10,6 +10,9 @@ export const metadata: Metadata = {
     default: siteData.title,
     template: `%s | ${siteData.title}`,
   },
+  openGraph: {
+    siteName: siteData.title,
+  },
   description: siteData.description,
   alternates: {
     canonical: siteData.siteURL,
