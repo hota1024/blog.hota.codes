@@ -1,0 +1,29 @@
+
+.link-card-root {
+  margin-top: 1.5em;
+  @apply h-[120px] grid grid-cols-[1fr,100px] sm:grid-cols-[1fr,200px] items-center gap-2 border rounded-md overflow-hidden no-underline;
+}
+
+.link-card-root:hover {
+  @apply shadow-md bg-accent;
+}
+
+.link-card-content {
+  @apply px-4 flex flex-col min-w-0;
+}
+
+.link-card-title {
+  @apply font-bold overflow-hidden whitespace-nowrap overflow-ellipsis;
+}
+
+.link-card-description {
+  @apply text-muted-foreground overflow-hidden line-clamp-2;
+}
+
+.link-card-image {
+  @apply w-full h-[120px] object-cover;
+}
+
+.link-card-site {
+  @apply text-muted-foreground text-sm flex gap-2 items-center;
+}

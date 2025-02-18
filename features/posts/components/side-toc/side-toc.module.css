@@ -1,0 +1,19 @@
+.list {
+  @apply flex flex-col gap-2;
+}
+
+.list > li {
+  @apply text-sm flex flex-col gap-2;
+}
+
+.list > li > ol {
+  @apply pl-4;
+}
+
+.link {
+  @apply text-muted-foreground font-bold transition-all;
+}
+
+.activeLink {
+  @apply text-foreground text-blue-500;
+}

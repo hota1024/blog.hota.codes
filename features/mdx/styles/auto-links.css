@@ -1,0 +1,7 @@
+.heading-link {
+  @apply inline-block text-muted-foreground mr-2 select-none
+}
+
+a:has(.heading-link) {
+  @apply no-underline
+}

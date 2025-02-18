@@ -1,0 +1,18 @@
+{
+  "tailwindCSS.classAttributes": [
+    "class",
+    "className",
+    "ngClass",
+    "class:list",
+    "tw"
+  ],
+  "textlint.languages": [
+    "markdown",
+    "plaintext",
+    "html",
+    "tex",
+    "latex",
+    "doctex",
+    "mdx"
+  ]
+}
