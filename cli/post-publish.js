@@ -7,7 +7,6 @@ import remarkStringify from "remark-stringify";
 const { styleText } = utils;
 
 import { Command } from "commander";
-import { Yaml } from "mdast";
 import remarkFrontmatter from "remark-frontmatter";
 import { unified } from "unified";
 import { visit } from "unist-util-visit";
@@ -38,7 +37,7 @@ const command = new Command()
       .use(remarkParse)
       .use(remarkFrontmatter, ["yaml", "toml"])
       .use(() => (tree) => {
-        visit(tree, "yaml", (node: Yaml) => {
+        visit(tree, "yaml", (node) => {
           const frontmatter = yaml.parse(node.value);
           frontmatter.date = `${date.getFullYear()}-${
             date.getMonth() + 1

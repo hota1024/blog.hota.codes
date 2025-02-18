@@ -4,16 +4,17 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "TZ=Asia/Tokyo next build",
     "start": "next start",
     "lint": "next lint",
-    "textlint": "textlint \"./contents/**/*.mdx?\" -f pretty-error",
+    "type-check": "tsc --noEmit",
+    "textlint": "textlint contents/**/*.mdx",
     "analyze-bundle": "ANALYZE=true NODE_ENV=production pnpm build",
-    "tag:new": "tsx cli/tag-new.ts",
+    "tag:new": "tsx cli/tag-new.js",
     "post:new": "echo 'Please use `pnpm tech:new` or `pnpm hobby:new` instead.'",
-    "post:publish": "tsx cli/post-publish.ts",
-    "tech:new": "tsx cli/post-new.ts --category tech",
-    "hobby:new": "tsx cli/post-new.ts --category hobby"
+    "post:publish": "tsx cli/post-publish.js",
+    "tech:new": "tsx cli/post-new.js --category tech",
+    "hobby:new": "tsx cli/post-new.js --category hobby"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
