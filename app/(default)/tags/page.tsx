@@ -3,6 +3,7 @@ import { Metadata } from "next";
 
 import { allPosts } from "@/features/posts/lib";
 import { TagChip } from "@/features/tags/components/tag-chip";
+import { siteData } from "@/site";
 
 export async function generateStaticParams() {
   return allPosts.map((post) => ({
@@ -12,6 +13,9 @@ export async function generateStaticParams() {
 
 export const metadata: Metadata = {
   title: "タグ一覧",
+  alternates: {
+    canonical: `${siteData.siteURL}/tags`,
+  },
 };
 
 export default async function TagsPage() {

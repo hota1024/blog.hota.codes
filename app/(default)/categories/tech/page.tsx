@@ -2,6 +2,7 @@ import { Metadata } from "next";
 
 import { PostsGrid } from "@/features/posts/components/posts-grid";
 import { allPosts, getPostsByCategory } from "@/features/posts/lib";
+import { siteData } from "@/site";
 
 export async function generateStaticParams() {
   return allPosts.map((post) => ({
@@ -11,6 +12,9 @@ export async function generateStaticParams() {
 
 export const metadata: Metadata = {
   title: "技術系の記事一覧",
+  alternates: {
+    canonical: `${siteData.siteURL}/categories/tech`,
+  },
 };
 
 export default async function Page() {

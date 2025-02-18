@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 
 import { PostsGrid } from "@/features/posts/components/posts-grid";
 import { allPosts } from "@/features/posts/lib";
+import { siteData } from "@/site";
 
 type Props = {
   params: Promise<{
@@ -28,8 +29,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return {
     title: `「${tag.title}」がタグ付けされた記事一覧`,
+    alternates: {
+      canonical: `${siteData.siteURL}/tags/${tag.slug}`,
+    },
   };
 }
+
 export default async function TagPage({ params }: Props) {
   const { slug } = await params;
   const tag = allTags.find((tag) => tag.slug === slug);
