@@ -11,7 +11,7 @@
     margin-top: var(--block-margin-top);
   }
 
-  > a:not(.link-card-root) {
+  a:not(.link-card-root) {
     @apply underline;
   }
 
