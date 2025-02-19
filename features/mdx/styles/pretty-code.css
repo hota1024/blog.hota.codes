@@ -14,6 +14,10 @@ code[data-line-numbers] {
   counter-reset: line;
 }
 
+span[data-highlighted-line] {
+  @apply block bg-black/40;
+}
+
 code[data-line-numbers] > [data-line]::before {
   counter-increment: line;
   content: counter(line);

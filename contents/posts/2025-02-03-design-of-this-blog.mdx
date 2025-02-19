@@ -1,0 +1,112 @@
+---
+emoji: 🛠️
+slug: design-of-this-blog
+title: Next.js + MDX + Contentlayer + shadcn/ui で作るテックブログ
+category: tech
+tags:
+  - nextjs
+  - mdx
+  - contentlayer
+  - shadcn-ui
+date: 2025-2-20
+---
+
+　私はこのブログを作るに当たり、Next.js、MDX、Contentlayer、shadcn/ui を使いました。この記事では、それぞれの技術の紹介と選定理由について紹介をします。
+
+# Next.js
+
+　有名な React フレームワークです。主な選定理由は自分が使い慣れていること、SSG（Static Site Generation）に対応していることから採用しました。
+
+https://nextjs.org/
+
+# MDX
+
+　Markdown の文法の中で JSX が使えるマークアップ言語です。Web 系技術のブログ記事を書く際に、実際に React コンポーネントの動作デモや、Markdown の表現力が不足する場合に便利なため採用しました。
+
+https://mdxjs.com/
+
+　以下が実際に MDX の中で JSX を使う例です。
+
+```tsx title="MDX の中で JSX を使う例"
+<button
+    className="bg-blue-500 px-4 py-2 rounded-md text-white"
+    onClick={(e) => {
+        const count = e.target.textContent.split(":")[1].trim();
+        e.target.textContent = `Count: ${parseInt(count) + 1}`;
+    }}
+>Count: 0</button>
+```
+
+　実際の動作は以下の通りです。
+
+<button
+  className="bg-blue-500 px-4 py-2 rounded-md text-white mt-[var(--block-margin-top)]"
+  onClick={(e) => {
+  const count = e.target.textContent.split(":")[1].trim();
+  e.target.textContent = `Count: ${parseInt(count) + 1}`;
+}}> Count: 0</button>
+
+# Contentlayer
+
+　このブログでは Contentlayer というツールを使い MDX の記事管理しています。Contentlayer は Markdown や MDX のファイルを型安全に管理できるツールです。
+
+https://contentlayer.dev/
+
+　具体的には下記の様に、Contentlayer の設定ファイルで記事のスキーマを定義することで、 TypeScript の型定義や記事データにアクセスできる変数を生成してくれます。
+
+```ts title="contentlayer.config.ts"
+export const Post = defineDocumentType(() => ({
+  // ドキュメント名（ここでは記事の定義をシたいため `Post` に設定）
+  name: "Post",
+  // ドキュメントのファイルパスパターン
+  filePathPattern: `posts/**/*.mdx`,
+  // ドキュメントのコンテンツタイプ（ここでは MDX に設定）
+  contentType: "mdx",
+  // ドキュメントのフィールド（Frontmatter）定義
+  fields: {
+    emoji: { type: "string", required: false },
+    title: { type: "string", required: true },
+    slug: { type: "string", required: true },
+    tags: {
+      type: "list",
+      of: {
+        type: "string",
+      },
+    },
+    date: { type: "date" },
+  },
+}));
+```
+
+　専用の `contentlayer` コマンドを実行することで型定義ファイルと記事データを生成ができます。また Next.js 向けに提供されている [`next-contentlayer`](https://contentlayer.dev/docs/reference/next-contentlayer-e6e7eb3a) というプラグインを使うことで、ビルド時に自動で生成してくれるため、非常に便利です。
+
+　生成された記事データは `.contentlayer` ディレクトリに保存され、以下のように記事データにアクセスできます。
+
+```tsx title="Contentlayer で生成された記事データにアクセスする例"
+import { allPosts, type Post } from "./contentlayer/generated";
+
+function PostList() {
+    return (
+        <ul>
+            {allPosts.map((post: Post) => (
+                <li key={post.slug}>
+                    <a href={`/posts/${post.slug}`}>{post.title}</a>
+                </li>
+            ))}
+        </ul>
+    );
+}
+```
+
+# shadcn/ui
+
+　UI ライブラリには shadcn/ui を採用しました。shadcn/ui は Tailwind CSS と radix-ui をベースにした UI ライブラリで、デザインが好みだったため採用しました。
+
+https://ui.shadcn.com/
+
+# まとめ
+
+　雑な紹介になってしまいましたが、3回ぐらいブログを作り直しているうちに、この構成が自分にとって一番、開発と記事の管理がしやすいと感じました。これからブログを作る方の参考になれば幸いです。
+
+```
+```
