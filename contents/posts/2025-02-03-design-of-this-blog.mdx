@@ -4,10 +4,11 @@ slug: design-of-this-blog
 title: Next.js + MDX + Contentlayer + shadcn/ui で作るテックブログ
 category: tech
 tags:
-    - nextjs
-    - mdx
-    - contentlayer
-    - shadcn-ui
+  - nextjs
+  - mdx
+  - contentlayer
+  - shadcn-ui
+date: 2025-2-20
 ---
 
 　私はこのブログを作るに当たり、Next.js、MDX、Contentlayer、shadcn/ui を使いました。この記事では、それぞれの技術の紹介と選定理由について紹介をします。
@@ -38,13 +39,14 @@ https://mdxjs.com/
 
 　実際の動作は以下の通りです。
 
-<button
-    className="bg-blue-500 px-4 py-2 rounded-md text-white mt-[var(--block-margin-top)]"
-    onClick={(e) => {
-        const count = e.target.textContent.split(":")[1].trim();
-        e.target.textContent = `Count: ${parseInt(count) + 1}`;
-    }}
->Count: 0</button>
+\<button
+className="bg-blue-500 px-4 py-2 rounded-md text-white mt-\[var(--block-margin-top)]"
+onClick={(e) => {
+const count = e.target.textContent.split(":")\[1].trim();
+e.target.textContent = `Count: ${parseInt(count) + 1}`;
+}}
+
+> Count: 0</button>
 
 # Contentlayer
 
@@ -107,4 +109,6 @@ https://ui.shadcn.com/
 # まとめ
 
 　雑な紹介になってしまいましたが、3回ぐらいブログを作り直しているうちに、この構成が自分にとって一番、開発と記事の管理がしやすいと感じました。これからブログを作る方の参考になれば幸いです。
+
+```
 ```
