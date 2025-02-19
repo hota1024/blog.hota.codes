@@ -39,14 +39,12 @@ https://mdxjs.com/
 
 　実際の動作は以下の通りです。
 
-\<button
-className="bg-blue-500 px-4 py-2 rounded-md text-white mt-\[var(--block-margin-top)]"
-onClick={(e) => {
-const count = e.target.textContent.split(":")\[1].trim();
-e.target.textContent = `Count: ${parseInt(count) + 1}`;
-}}
-
-> Count: 0</button>
+<button
+  className="bg-blue-500 px-4 py-2 rounded-md text-white mt-[var(--block-margin-top)]"
+  onClick={(e) => {
+  const count = e.target.textContent.split(":")[1].trim();
+  e.target.textContent = `Count: ${parseInt(count) + 1}`;
+}}> Count: 0</button>
 
 # Contentlayer
 
