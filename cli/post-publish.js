@@ -48,13 +48,11 @@ const command = new Command()
       .use(remarkStringify)
       .process(file);
 
-    console.log(vfile.toString());
-
     await fs.writeFile(
       `contents/${post._raw.sourceFilePath}`,
       vfile.toString()
     );
-    console.log("write");
+    console.log(styleText("green", `[post-publish] Published post ${slug}.`));
   });
 
 command.parse();
