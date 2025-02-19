@@ -94,7 +94,7 @@ export const remarkLinkCard: Plugin = () => {
                             {
                               class: "link-card-site-icon",
                               src: `https://www.google.com/s2/favicons?domain=${url.hostname}`,
-                              alt: ogp.result.ogSiteName,
+                              alt: ogp.result.ogSiteName ?? url.hostname,
                             },
                             []
                           ),

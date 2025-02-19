@@ -109,7 +109,7 @@ export default async function Page({ params }: Props) {
           )}
         </div>
 
-        <div className="flex justify-center gap-2">
+        <div className="flex flex-wrap justify-center gap-2">
           {tags.map((tag) => (
             <TagChip key={tag.slug} tag={tag} />
           ))}
