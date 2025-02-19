@@ -61,7 +61,7 @@
     content: "`";
   }
 
-  > pre {
+  pre {
     code::before, code::after {
       content: none;
     }
