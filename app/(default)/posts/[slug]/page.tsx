@@ -1,3 +1,4 @@
+import { jaModel, Parser } from "budoux";
 import { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -59,6 +60,8 @@ export default async function Page({ params }: Props) {
     notFound();
   }
 
+  const parser = new Parser(jaModel);
+
   const tags = getPostTags(post);
   const missingTags =
     post.tags?.filter((tag) => !tags.find((t) => t.slug === tag)) ?? [];
@@ -66,13 +69,19 @@ export default async function Page({ params }: Props) {
   const commits = await getFileCommits(postPath);
   const lastCommitDate = commits[0]?.commit.committer?.date;
 
+  const title = parser.parse(post.title);
+
   return (
     <div className="flex flex-col gap-8 px-2 md:gap-16 md:px-4">
       <div className="flex flex-col gap-8">
         <div className="text-center text-8xl">{post.emoji}</div>
 
         <h1 className="text-center text-2xl font-black lg:text-4xl">
-          {post.title}
+          {title.map((seg) => (
+            <span className="inline-block" key={seg}>
+              {seg}
+            </span>
+          ))}
         </h1>
 
         <div className="flex justify-center gap-4 text-sm text-muted-foreground">
