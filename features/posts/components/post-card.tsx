@@ -45,7 +45,7 @@ export function PostCard({ post }: PostCardProps) {
           </div>
         )}
       </div>
-      <div className="flex gap-2 px-4">
+      <div className="flex flex-wrap gap-2 px-4">
         {tags.map((tag) => (
           <TagChip key={tag.slug} tag={tag} size="small" />
         ))}
